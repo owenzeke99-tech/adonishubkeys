@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adonis Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--purple:#a855f7;
+--bright:#d8b4fe;
+--dark:#080610;
+}
+body{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+overflow:hidden;
+background:#080610;
+color:white;
+font-family:Inter,sans-serif;
+}
+
+/* BACKGROUND */
+.bg{
+position:fixed;inset:0;z-index:-5;
+background:
+radial-gradient(ellipse at 50% 45%,#29113f 0%,#10091c 48%,#080610 85%);
+}
+.glow{
+position:fixed;width:400px;height:400px;
+border-radius:50%;filter:blur(140px);
+background:#9333ea;opacity:.2;
+animation:glow 9s ease-in-out infinite alternate;
+pointer-events:none;
+}
+.glow.one{top:-180px;left:-120px}
+.glow.two{bottom:-200px;right:-100px;animation-delay:-4s}
+@keyframes glow{
+from{transform:translate(0,0) scale(.8)}
+to{transform:translate(130px,100px) scale(1.35)}
+}
+.grid{
+position:fixed;inset:0;z-index:-4;pointer-events:none;
+background-image:
+linear-gradient(#a855f709 1px,transparent 1px),
+linear-gradient(90deg,#a855f709 1px,transparent 1px);
+background-size:48px 48px;
+mask-image:linear-gradient(transparent,black,transparent);
+}
+.particles{position:fixed;inset:0;z-index:-2;pointer-events:none}
+.particle{
+position:absolute;bottom:-15px;
+width:3px;height:3px;border-radius:50%;
+background:#e9c5ff;
+box-shadow:0 0 12px #b45aff;
+animation:rise linear infinite;
+}
+@keyframes rise{
+0%{transform:translateY(0) scale(.3);opacity:0}
+15%{opacity:.9}
+85%{opacity:.6}
+100%{transform:translateY(-110vh) scale(1.5);opacity:0}
+}
+
+/* CARD */
+.container{
+width:100%;max-width:450px;
+animation:appear .9s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes appear{
+from{opacity:0;transform:translateY(35px) scale(.95)}
+to{opacity:1;transform:translateY(0) scale(1)}
+}
+.card{
+position:relative;
+overflow:hidden;
+padding:38px 30px 30px;
+border-radius:25px;
+background:linear-gradient(145deg,#191024,#0b0812 70%);
+border:1px solid #a855f755;
+box-shadow:0 0 45px #9333ea20,0 25px 90px #000a,
+inset 0 1px 0 #ffffff12;
+}
+.card:before{
+content:"";position:absolute;
+top:0;left:-100%;width:100%;height:2px;
+background:linear-gradient(90deg,transparent,#fff,#a855f7,transparent);
+animation:scan 3.5s linear infinite;
+}
+.card:after{
+content:"";position:absolute;inset:0;
+background:radial-gradient(ellipse at 50% 0%,#a855f715,transparent 60%);
+pointer-events:none;
+}
+@keyframes scan{to{left:100%}}
+
+/* LOGO A - STRAIGHT */
+.logo-wrap{
+display:flex;justify-content:center;
+margin-bottom:24px;
+}
+.logo{
+position:relative;
+width:100px;height:100px;
+display:flex;align-items:center;justify-content:center;
+border-radius:25px;
+background:linear-gradient(145deg,#32134f,#100a1a);
+border:1px solid #c084fc88;
+box-shadow:0 0 35px #a855f755,inset 0 0 25px #9333ea30;
+animation:float 4s ease-in-out infinite;
+}
+.logo:before{
+content:"";position:absolute;inset:-7px;
+border:1px solid #c084fc55;border-radius:30px;
+animation:ring 12s linear infinite;
+}
+.logo:after{
+content:"";position:absolute;
+inset:9px;border:1px solid #a855f722;
+border-radius:17px;
+}
+.logo span{
+font-family:Orbitron,sans-serif;
+font-size:65px;
+font-weight:900;
+font-style:normal;
+line-height:1;
+color:#e9d5ff;
+background:linear-gradient(180deg,#fff,#d8b4fe 55%,#9333ea);
+-webkit-background-clip:text;
+background-clip:text;
+-webkit-text-fill-color:transparent;
+filter:drop-shadow(0 0 13px #b45aff);
+}
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-7px)}
+}
+@keyframes ring{to{transform:rotate(360deg)}}
+
+/* TITLE */
+.title{
+text-align:center;
+font-family:Orbitron,sans-serif;
+font-size:29px;
+font-weight:900;
+letter-spacing:2px;
+background:linear-gradient(90deg,#fff,#d8b4fe,#a855f7,#fff);
+background-size:250% auto;
+color:transparent;
+-webkit-background-clip:text;
+background-clip:text;
+animation:shine 5s linear infinite;
+text-shadow:none;
+}
+@keyframes shine{to{background-position:250% center}}
+.subtitle{
+text-align:center;margin-top:10px;
+font-size:10px;letter-spacing:4px;
+font-weight:800;color:#ad9bbf;
+}
+
+/* STATUS */
+.status{
+display:flex;justify-content:center;
+margin:25px 0;
+}
+.status span{
+padding:9px 17px;border-radius:30px;
+background:#a855f712;
+border:1px solid #a855f755;
+color:#d8b4fe;
+font-size:10px;font-weight:800;
+letter-spacing:1.5px;
+box-shadow:0 0 18px #a855f715;
+}
+.status i{
+display:inline-block;width:7px;height:7px;
+margin-right:9px;border-radius:50%;
+background:#c084fc;
+box-shadow:0 0 12px #c084fc;
+animation:blink 1.4s infinite;
+}
+@keyframes blink{50%{opacity:.25;box-shadow:0 0 2px #c084fc}}
+
+/* KEY MENU */
+.key-label{
+font-size:12px;font-weight:800;
+letter-spacing:1px;color:#d8c5e8;
+margin-bottom:12px;
+}
+.key-box{
+position:relative;
+display:flex;align-items:center;gap:9px;
+padding:14px 12px;
+border-radius:13px;
+background:linear-gradient(110deg,#110b19,#0a0710,#180c25);
+background-size:200% 100%;
+border:1px solid #8b5bb5;
+box-shadow:inset 0 0 22px #9333ea13,0 0 15px #9333ea12;
+animation:menuGlow 5s ease-in-out infinite;
+transition:.35s;
+}
+@keyframes menuGlow{
+0%,100%{box-shadow:inset 0 0 18px #9333ea10,0 0 10px #9333ea10}
+50%{box-shadow:inset 0 0 28px #9333ea25,0 0 23px #9333ea30}
+}
+.key-box:before{
+content:"";position:absolute;
+left:10%;right:10%;top:0;height:1px;
+background:linear-gradient(90deg,transparent,#e9d5ff,transparent);
+animation:keyLine 3s ease-in-out infinite;
+}
+@keyframes keyLine{
+0%,100%{opacity:.2;transform:scaleX(.4)}
+50%{opacity:1;transform:scaleX(1)}
+}
+.key-box:hover{
+border-color:#d8b4fe;
+transform:translateY(-2px);
+box-shadow:0 0 25px #a855f744,inset 0 0 25px #9333ea22;
+}
+.key-box input{
+flex:1;min-width:0;
+background:transparent;border:0;outline:0;
+color:#e0c3ff;
+font-size:11px;font-weight:700;
+font-family:Inter,sans-serif;
+}
+.key-box button{
+flex-shrink:0;
+padding:10px 13px;
+border:1px solid #a855f766;
+border-radius:9px;
+background:linear-gradient(135deg,#35164e,#241032);
+color:#e9d5ff;
+font-size:10px;font-weight:900;
+letter-spacing:1px;cursor:pointer;
+transition:.3s;
+}
+.key-box button:hover{
+background:#7838b4;
+box-shadow:0 0 20px #a855f777;
+transform:scale(1.05);
+}
+
+/* COPY BUTTON */
+.copy-btn{
+position:relative;overflow:hidden;
+width:100%;margin-top:20px;padding:17px;
+border:1px solid #d8b4fe;
+border-radius:12px;
+background:linear-gradient(100deg,#63219a,#9333ea,#63219a);
+background-size:200% auto;
+color:white;
+font-family:Orbitron,sans-serif;
+font-size:12px;font-weight:900;
+letter-spacing:1.5px;
+cursor:pointer;
+box-shadow:0 5px 28px #9333ea40;
+transition:.3s;
+animation:buttonShine 5s linear infinite;
+}
+.copy-btn:before{
+content:"";position:absolute;
+top:-50%;left:-60%;
+width:30%;height:200%;
+transform:rotate(25deg);
+background:#ffffff35;
+filter:blur(10px);
+animation:buttonSweep 4s ease-in-out infinite;
+}
+@keyframes buttonSweep{
+0%,50%{left:-60%}
+100%{left:140%}
+}
+@keyframes buttonShine{to{background-position:200% center}}
+.copy-btn:hover{
+transform:translateY(-4px);
+box-shadow:0 10px 35px #a855f788;
+}
+.copy-btn:active{transform:scale(.97)}
+
+/* FOOTER */
+.line{
+width:60px;height:2px;margin:23px auto 0;
+background:linear-gradient(90deg,transparent,#c084fc,transparent);
+box-shadow:0 0 12px #a855f7;
+}
+.footer{
+text-align:center;margin-top:24px;
+color:#776784;font-size:10px;
+letter-spacing:1.3px;line-height:1.8;
+font-weight:600;
+}
+.footer strong{color:#c084fc}
+
+@media(max-width:480px){
+body{padding:15px}
+.card{padding:35px 21px 26px}
+.title{font-size:25px}
+.logo{width:90px;height:90px}
+.logo span{font-size:59px}
+.key-box input{font-size:10px}
+}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="glow one"></div>
+<div class="glow two"></div>
+<div class="grid"></div>
+<div class="particles" id="particles"></div>
+
+<div class="container">
+<main class="card">
+
+<div class="logo-wrap">
+<div class="logo"><span>A</span></div>
+</div>
+
+<h1 class="title">ADONIS HUB</h1>
+<p class="subtitle">PREMIUM KEY SYSTEM</p>
+
+<div class="status">
+<span><i></i>SYSTEM ONLINE</span>
+</div>
+
+<div class="key-label">YOUR ACCESS KEY</div>
+
+<div class="key-box">
+<input id="key" type="text"
+value="AdonisHubKeyBskwiwjwoOaowiwkwoLsjwjwowo"
+readonly>
+<button onclick="copyKey(this)">COPY</button>
+</div>
+
+<button class="copy-btn" onclick="copyKey(this)">
+COPY ACCESS KEY
+</button>
+
+<div class="line"></div>
+
+<div class="footer">
+POWERED BY <strong>ADONIS HUB</strong><br>
+© 2026 ADONIS HUB. ALL RIGHTS RESERVED.
+</div>
+
+</main>
+</div>
+
+<script>
+const particles=document.getElementById("particles");
+
+for(let i=0;i<65;i++){
+const p=document.createElement("div");
+p.className="particle";
+p.style.left=Math.random()*100+"%";
+p.style.animationDuration=(7+Math.random()*13)+"s";
+p.style.animationDelay=(-Math.random()*20)+"s";
+p.style.opacity=Math.random();
+particles.appendChild(p);
+}
+
+async function copyKey(button){
+const key=document.getElementById("key").value;
+const old=button.innerText;
+
+try{
+await navigator.clipboard.writeText(key);
+}catch(e){
+const input=document.getElementById("key");
+input.select();
+document.execCommand("copy");
+}
+
+button.innerText="COPIED ✓";
+setTimeout(()=>button.innerText=old,1800);
+}
+</script>
+
+</body>
+</html>
